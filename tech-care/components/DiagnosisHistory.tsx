@@ -12,66 +12,37 @@ interface DiagnosisHistoryProps {
 export default function DiagnosisHistory({
   diagnosisHistory = [],
 }: DiagnosisHistoryProps) {
-  // Get the latest diagnosis data (most recent entry)
   const latestData =
     diagnosisHistory.length > 0
       ? diagnosisHistory[diagnosisHistory.length - 1]
       : null;
 
-  // Build health metrics from latest data
-  const healthMetrics: HealthMetric[] = latestData
-    ? [
-        {
-          id: "1",
-          icon: "/ico-respiratory.svg",
-          title: "Respiratory Rate",
-          value: `${latestData.respiratory_rate.value} bpm`,
-          status: latestData.respiratory_rate.levels,
-          bgColor: "#E0F3FA",
-        },
-        {
-          id: "2",
-          icon: "/ico-temperature.svg",
-          title: "Temperature",
-          value: `${latestData.temperature.value}°F`,
-          status: latestData.temperature.levels,
-          bgColor: "#FFE6E9",
-        },
-        {
-          id: "3",
-          icon: "/ico-heart.svg",
-          title: "Heart Rate",
-          value: `${latestData.heart_rate.value} bpm`,
-          status: latestData.heart_rate.levels,
-          bgColor: "#FFE6F1",
-        },
-      ]
-    : [
-        {
-          id: "1",
-          icon: "/ico-respiratory.svg",
-          title: "Respiratory Rate",
-          value: "-- bpm",
-          status: "No data",
-          bgColor: "#E0F3FA",
-        },
-        {
-          id: "2",
-          icon: "/ico-temperature.svg",
-          title: "Temperature",
-          value: "--°F",
-          status: "No data",
-          bgColor: "#FFE6E9",
-        },
-        {
-          id: "3",
-          icon: "/ico-heart.svg",
-          title: "Heart Rate",
-          value: "-- bpm",
-          status: "No data",
-          bgColor: "#FFE6F1",
-        },
-      ];
+  const healthMetrics: HealthMetric[] = [
+    {
+      id: "1",
+      icon: "/ico-respiratory.svg",
+      title: "Respiratory Rate",
+      value: `${latestData?.respiratory_rate.value} bpm`,
+      status: latestData?.respiratory_rate.levels || "--",
+      bgColor: "#E0F3FA",
+    },
+    {
+      id: "2",
+      icon: "/ico-temperature.svg",
+      title: "Temperature",
+      value: `${latestData?.temperature.value}°F`,
+      status: latestData?.temperature.levels || "--",
+      bgColor: "#FFE6E9",
+    },
+    {
+      id: "3",
+      icon: "/ico-heart.svg",
+      title: "Heart Rate",
+      value: `${latestData?.heart_rate.value} bpm`,
+      status: latestData?.heart_rate.levels || "--",
+      bgColor: "#FFE6F1",
+    },
+  ];
 
   return (
     <div className="bg-white rounded-2xl p-6">

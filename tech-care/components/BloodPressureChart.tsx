@@ -33,7 +33,6 @@ interface BloodPressureChartProps {
 export default function BloodPressureChart({
   diagnosisHistory,
 }: BloodPressureChartProps) {
-  // Sort by year and month to ensure chronological order
   const sortedHistory = [...diagnosisHistory].sort((a, b) => {
     if (a.year !== b.year) return a.year - b.year;
     const months = [
@@ -53,7 +52,6 @@ export default function BloodPressureChart({
     return months.indexOf(a.month) - months.indexOf(b.month);
   });
 
-  // Get last 6 months of data
   const last6Months = sortedHistory.slice(-6);
 
   const labels = last6Months.map(
@@ -161,9 +159,7 @@ export default function BloodPressureChart({
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-[#C26EB4]"></div>
-            <span className="text-sm text-[#072635] font-medium">
-              Systolic
-            </span>
+            <span className="text-sm text-[#072635] font-medium">Systolic</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-[#7E6CAB]"></div>

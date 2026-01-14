@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f7f8;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-family-sans: var(--font-manrope);
+  --font-family-manrope: var(--font-manrope);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #f6f7f8;
+    --foreground: #f6f7f8;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.nav-item-text {
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 19px;
+  letter-spacing: normal;
+  color: #072635;
+}
+
+.card-title {
+  @apply font-extrabold text-2xl leading-8.25 tracking-normal text-[#072635];
+}

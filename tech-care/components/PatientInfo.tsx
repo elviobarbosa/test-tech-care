@@ -2,35 +2,32 @@
 
 import React from "react";
 import Image from "next/image";
-
-export interface PatientDetails {
-  name: string;
-  avatar?: string;
-  dateOfBirth: string;
-  gender: string;
-  contactInfo: {
-    phone: string;
-    email: string;
-  };
-  emergencyContact: {
-    name: string;
-    phone: string;
-  };
-  insuranceProvider: string;
-}
+import { Patient } from "@/types/patient";
 
 interface PatientInfoProps {
-  patient: PatientDetails;
+  patient: Patient;
+}
+
+// Helper function to format date
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 export default function PatientInfo({ patient }: PatientInfoProps) {
+  const genderIcon = patient.gender.toLowerCase() === "female" ? "/ico-female.svg" : "/ico-male.svg";
+
   return (
     <div className="p-6 shrink-0 bg-white rounded-2xl">
       <div className="flex flex-col items-center mb-8">
         <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center mb-4">
-          {patient.avatar ? (
+          {patient.profile_picture ? (
             <img
-              src={patient.avatar}
+              src={patient.profile_picture}
               alt={patient.name}
               className="w-full h-full rounded-full object-cover"
             />
@@ -61,14 +58,14 @@ export default function PatientInfo({ patient }: PatientInfoProps) {
           </div>
           <div>
             <p className="right-item-description">Date of Birth</p>
-            <p className="right-item-value">{patient.dateOfBirth}</p>
+            <p className="right-item-value">{formatDate(patient.date_of_birth)}</p>
           </div>
         </div>
 
         <div className="flex items-start gap-3">
           <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
             <Image
-              src="/ico-female.svg"
+              src={genderIcon}
               alt=""
               width={42}
               height={42}
@@ -93,8 +90,7 @@ export default function PatientInfo({ patient }: PatientInfoProps) {
           </div>
           <div>
             <p className="right-item-description">Contact Info</p>
-            <p className="right-item-value">{patient.contactInfo.phone}</p>
-            <p className="right-item-value">{patient.contactInfo.email}</p>
+            <p className="right-item-value">{patient.phone_number}</p>
           </div>
         </div>
 
@@ -110,8 +106,7 @@ export default function PatientInfo({ patient }: PatientInfoProps) {
           </div>
           <div>
             <p className="right-item-description">Emergency Contacts</p>
-            <p className="right-item-value">{patient.emergencyContact.name}</p>
-            <p className="right-item-value">{patient.emergencyContact.phone}</p>
+            <p className="right-item-value">{patient.emergency_contact}</p>
           </div>
         </div>
 
@@ -127,7 +122,7 @@ export default function PatientInfo({ patient }: PatientInfoProps) {
           </div>
           <div>
             <p className="right-item-description">Insurance Provider</p>
-            <p className="right-item-value">{patient.insuranceProvider}</p>
+            <p className="right-item-value">{patient.insurance_type}</p>
           </div>
         </div>
       </div>

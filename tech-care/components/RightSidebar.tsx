@@ -1,35 +1,45 @@
 "use client";
 
 import React from "react";
-import PatientInfo, { PatientDetails } from "./PatientInfo";
+import PatientInfo from "./PatientInfo";
 import LabResults from "./LabResults";
+import { Patient } from "@/types/patient";
 
 interface RightSidebarProps {
-  patient?: PatientDetails;
+  patient: Patient | null;
+  isLoading?: boolean;
 }
 
-export default function RightSidebar({ patient }: RightSidebarProps) {
-  const defaultPatient: PatientDetails = patient || {
-    name: "Emily Johnson",
-    dateOfBirth: "January 15, 1990",
-    gender: "Female",
-    contactInfo: {
-      phone: "(555) 123-4567",
-      email: "emily.johnson@email.com",
-    },
-    emergencyContact: {
-      name: "John Johnson",
-      phone: "(555) 987-6543",
-    },
-    insuranceProvider: "Blue Cross Blue Shield",
-  };
+export default function RightSidebar({
+  patient,
+  isLoading = false,
+}: RightSidebarProps) {
+  if (isLoading) {
+    return (
+      <aside className="w-96 flex flex-col rounded-2xl gap-6">
+        <div className="bg-white rounded-2xl p-6 flex items-center justify-center h-64">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+        </div>
+      </aside>
+    );
+  }
+
+  if (!patient) {
+    return (
+      <aside className="w-96 flex flex-col rounded-2xl gap-6">
+        <div className="bg-white rounded-2xl p-6 flex items-center justify-center h-64">
+          <p className="text-[#072635]">Select a patient to view details</p>
+        </div>
+      </aside>
+    );
+  }
 
   return (
     <aside className="w-96 flex flex-col rounded-2xl gap-6">
-      <PatientInfo patient={defaultPatient} />
+      <PatientInfo patient={patient} />
 
       <div className="bg-white rounded-2xl h-full">
-        <LabResults />
+        <LabResults labResults={patient.lab_results} />
       </div>
     </aside>
   );

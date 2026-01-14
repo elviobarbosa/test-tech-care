@@ -20,10 +20,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="h-screen flex flex-col mb-8">
+    <div className="flex flex-col mb-8">
       <Header />
 
-      <div className="flex flex-1 overflow-hidden w-[calc(100vw-36px)] m-auto">
+      <div className="flex flex-1  w-[calc(100vw-36px)] m-auto">
         <LeftSidebar
           patients={mockPatients}
           selectedPatientId={selectedPatientId}

@@ -37,3 +37,11 @@ body {
 .card-title {
   @apply font-extrabold text-2xl leading-8.25 tracking-normal text-[#072635];
 }
+
+.diagnosis-t-header {
+  @apply font-bold text-sm leading-4.75 tracking-normal text-[#072635] text-left;
+}
+
+.diagnosis-item {
+  @apply font-normal text-sm leading-4.75 tracking-normal text-[#072635] text-left;
+}

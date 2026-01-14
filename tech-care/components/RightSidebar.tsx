@@ -25,7 +25,7 @@ export default function RightSidebar({ patient }: RightSidebarProps) {
   };
 
   return (
-    <aside className="w-96 h-full flex flex-col rounded-2xl gap-6">
+    <aside className="w-96 flex flex-col rounded-2xl gap-6">
       <PatientInfo patient={defaultPatient} />
 
       <div className="bg-white rounded-2xl">

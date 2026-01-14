@@ -23,7 +23,7 @@ export default function LeftSidebar({
   onSelectPatient,
 }: LeftSidebarProps) {
   return (
-    <aside className="bg-white rounded-2xl w-80 h-full overflow-y-auto flex flex-col">
+    <aside className="bg-white rounded-2xl w-80 overflow-y-auto flex flex-col">
       <div className="p-6 flex-1 overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
           <h2 className="card-title">Patients</h2>

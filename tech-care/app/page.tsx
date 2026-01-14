@@ -23,7 +23,7 @@ export default function Home() {
     <div className="flex flex-col mb-8">
       <Header />
 
-      <div className="flex flex-1  w-[calc(100vw-36px)] m-auto">
+      <div className="flex flex-1 items-stretch w-[calc(100vw-36px)] m-auto">
         <LeftSidebar
           patients={mockPatients}
           selectedPatientId={selectedPatientId}

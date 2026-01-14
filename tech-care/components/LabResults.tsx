@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 interface LabResult {
   id: string;
@@ -48,24 +49,20 @@ export default function LabResults({ results = [] }: LabResultsProps) {
     <div className="p-6 flex-1 overflow-hidden flex flex-col mt-6">
       <h2 className="card-title">Lab Results</h2>
 
-      <div className="space-y-3 mt-6 flex-1 overflow-y-auto">
+      <div className="space-y-1 mt-6 flex-1 overflow-y-auto">
         {defaultResults.map((result) => (
           <div
             key={result.id}
-            className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors group"
+            className="flex px-2 items-center justify-between p-1 hover:bg-[#F6F7F8] transition-colors group"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 flex items-center justify-center">
-                <span className="text-gray-400">[Doc Icon]</span>
-              </div>
-              <span className="text-sm font-medium text-gray-800">
-                {result.name}
-              </span>
-            </div>
-            <button className="p-2 hover:bg-gray-200 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
-              <span className="w-5 h-5 block text-gray-600">
-                [Download Icon]
-              </span>
+            <span className="diagnosis-item">{result.name}</span>
+            <button className="p-2 hover:bg-[#F6F7F8] transition-colors">
+              <Image
+                src="/ico-download.svg"
+                alt="Download"
+                width={20}
+                height={20}
+              />
             </button>
           </div>
         ))}

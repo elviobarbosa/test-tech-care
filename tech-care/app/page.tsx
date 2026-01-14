@@ -74,7 +74,9 @@ export default function Home() {
             </div>
           ) : (
             <>
-              <DiagnosisHistory />
+              <DiagnosisHistory
+                diagnosisHistory={selectedPatient?.diagnosis_history}
+              />
               <DiagnosticList />
             </>
           )}

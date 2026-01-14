@@ -45,3 +45,11 @@ body {
 .diagnosis-item {
   @apply font-normal text-sm leading-4.75 tracking-normal text-[#072635] text-left;
 }
+
+.right-item-description {
+  @apply font-medium text-sm leading-4.75 tracking-normal text-[#072635] text-left;
+}
+
+.right-item-value {
+  @apply font-bold text-sm leading-4.75 tracking-normal text-[#072635] text-left;
+}

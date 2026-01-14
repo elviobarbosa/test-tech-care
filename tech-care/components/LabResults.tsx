@@ -46,7 +46,7 @@ export default function LabResults({ results = [] }: LabResultsProps) {
         ];
 
   return (
-    <div className="p-6 flex-1 overflow-hidden flex flex-col mt-6">
+    <div className="p-6 flex-1 overflow-hidden flex flex-col">
       <h2 className="card-title">Lab Results</h2>
 
       <div className="space-y-1 mt-6 flex-1 overflow-y-auto">

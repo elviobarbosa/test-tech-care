@@ -30,7 +30,7 @@ export default function Home() {
           onSelectPatient={setSelectedPatientId}
         />
 
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 pl-6 pr-6 space-y-6">
           <DiagnosisHistory />
           <DiagnosticList />
         </main>

@@ -154,56 +154,67 @@ export default function BloodPressureChart({
 
   return (
     <div className="bg-[#F4F0FE] rounded-xl p-6">
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-lg font-bold text-[#072635]">Blood Pressure</h3>
-        <div className="flex gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#C26EB4]"></div>
-            <span className="text-sm text-[#072635] font-medium">Systolic</span>
+      <div className="flex gap-6 items-center">
+        <div className="flex-1 h-52">
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="text-lg font-bold text-[#072635]">Blood Pressure</h3>
+            <div className="flex gap-4"></div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#7E6CAB]"></div>
-            <span className="text-sm text-[#072635] font-medium">
-              Diastolic
-            </span>
-          </div>
+          <Line data={data} options={options} />
         </div>
-      </div>
 
-      <div className="h-52 mb-4">
-        <Line data={data} options={options} />
+        {latestData && (
+          <div className="flex flex-col gap-4 w-48">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-3 h-3 rounded-full bg-[#C26EB4]"></div>
+                <span className="text-sm font-bold text-[#072635]">
+                  Systolic
+                </span>
+              </div>
+              <p className="text-2xl font-bold text-[#072635]">
+                {latestData.blood_pressure.systolic.value}
+              </p>
+              <p className="text-sm text-[#072635] flex items-center gap-1 mt-1">
+                <svg
+                  width="10"
+                  height="5"
+                  viewBox="0 0 10 5"
+                  fill="none"
+                  className="inline"
+                >
+                  <path d="M0 5L5 0L10 5H0Z" fill="#072635" />
+                </svg>
+                {latestData.blood_pressure.systolic.levels}
+              </p>
+            </div>
+            <hr className="border-[#CBC8D4]" />
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-3 h-3 rounded-full bg-[#7E6CAB]"></div>
+                <span className="text-sm font-bold text-[#072635]">
+                  Diastolic
+                </span>
+              </div>
+              <p className="text-2xl font-bold text-[#072635]">
+                {latestData.blood_pressure.diastolic.value}
+              </p>
+              <p className="text-sm text-[#072635] flex items-center gap-1 mt-1">
+                <svg
+                  width="10"
+                  height="5"
+                  viewBox="0 0 10 5"
+                  fill="none"
+                  className="inline"
+                >
+                  <path d="M0 0L5 5L10 0H0Z" fill="#072635" />
+                </svg>
+                {latestData.blood_pressure.diastolic.levels}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
-
-      {latestData && (
-        <div className="grid grid-cols-2 gap-4 mt-4">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <div className="w-3 h-3 rounded-full bg-[#C26EB4]"></div>
-              <span className="text-sm font-bold text-[#072635]">Systolic</span>
-            </div>
-            <p className="text-2xl font-bold text-[#072635] ml-5">
-              {latestData.blood_pressure.systolic.value}
-            </p>
-            <p className="text-sm text-[#072635] ml-5">
-              {latestData.blood_pressure.systolic.levels}
-            </p>
-          </div>
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <div className="w-3 h-3 rounded-full bg-[#7E6CAB]"></div>
-              <span className="text-sm font-bold text-[#072635]">
-                Diastolic
-              </span>
-            </div>
-            <p className="text-2xl font-bold text-[#072635] ml-5">
-              {latestData.blood_pressure.diastolic.value}
-            </p>
-            <p className="text-sm text-[#072635] ml-5">
-              {latestData.blood_pressure.diastolic.levels}
-            </p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

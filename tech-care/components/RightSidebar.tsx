@@ -38,7 +38,7 @@ export default function RightSidebar({
     <aside className="w-96 flex flex-col rounded-2xl gap-6">
       <PatientInfo patient={patient} />
 
-      <div className="bg-white rounded-2xl h-full">
+      <div className="bg-white rounded-2xl h-full overflow-y-hidden">
         <LabResults labResults={patient.lab_results} />
       </div>
     </aside>

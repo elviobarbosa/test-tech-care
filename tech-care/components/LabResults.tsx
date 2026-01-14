@@ -9,7 +9,7 @@ interface LabResultsProps {
 
 export default function LabResults({ labResults = [] }: LabResultsProps) {
   return (
-    <div className="p-6 flex-1 overflow-hidden flex flex-col">
+    <div className="p-6 flex-1 overflow-hidden flex flex-col h-full">
       <h2 className="card-title">Lab Results</h2>
 
       <div className="space-y-1 mt-6 flex-1 overflow-y-auto">

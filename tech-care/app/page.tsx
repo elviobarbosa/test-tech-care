@@ -59,7 +59,7 @@ export default function Home() {
     <div className="flex flex-col mb-8">
       <Header />
 
-      <div className="flex flex-1 items-stretch w-[calc(100vw-36px)] m-auto">
+      <div className="flex flex-1 items-stretch w-[calc(100vw-36px)] m-auto max-h-screen relative">
         <LeftSidebar
           patients={patients}
           selectedPatient={selectedPatient}
@@ -67,7 +67,7 @@ export default function Home() {
           isLoading={isLoadingPatients}
         />
 
-        <main className="flex-1 pl-6 pr-6 space-y-6">
+        <main className="flex-1 pl-6 pr-6 space-y-6 max-h-full flex flex-col justify-between">
           {isLoadingPatientDetails ? (
             <div className="flex items-center justify-center h-full">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>

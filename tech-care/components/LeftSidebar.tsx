@@ -28,9 +28,9 @@ export default function LeftSidebar({
   }
 
   return (
-    <aside className="bg-white rounded-2xl w-80 overflow-y-auto flex flex-col">
-      <div className="p-6 flex-1 overflow-y-auto">
-        <div className="flex items-center justify-between mb-6">
+    <aside className="bg-white rounded-2xl w-80 overflow-y-auto flex flex-col max-h-screen">
+      <div className="py-6 flex-1 overflow-y-auto">
+        <div className="px-6 flex items-center justify-between mb-6">
           <h2 className="card-title">Patients</h2>
           <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
             <span className="w-5 h-5 block">
@@ -53,56 +53,64 @@ export default function LeftSidebar({
               <button
                 key={patient.name}
                 onClick={() => onSelectPatient(patient.name)}
-                className={`w-full flex items-center justify-between p-4 rounded-lg transition-colors ${
+                className={`w-full py-4 transition-colors ${
                   isSelected
                     ? "bg-[#D8FCF7] border border-transparent"
                     : "hover:bg-gray-50 border border-transparent"
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center shrink-0">
-                    {patient.profile_picture ? (
-                      <img
-                        src={patient.profile_picture}
-                        alt={patient.name}
-                        className="w-full h-full rounded-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-sm font-semibold text-gray-700">
-                        {patient.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")
-                          .slice(0, 2)}
+                <div className="w-full flex items-center justify-between px-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center shrink-0">
+                      {patient.profile_picture ? (
+                        <img
+                          src={patient.profile_picture}
+                          alt={patient.name}
+                          className="w-full h-full rounded-full object-cover"
+                        />
+                      ) : (
+                        <span className="text-sm font-semibold text-gray-700">
+                          {patient.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")
+                            .slice(0, 2)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex flex-col items-start">
+                      <span className="text-sm font-semibold text-gray-800">
+                        {patient.name}
                       </span>
-                    )}
+                      <span className="text-xs text-gray-500">
+                        {patient.gender}, {patient.age}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex flex-col items-start">
-                    <span className="text-sm font-semibold text-gray-800">
-                      {patient.name}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      {patient.gender}, {patient.age}
-                    </span>
-                  </div>
-                </div>
-                <div
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Handle more options menu here
-                  }}
-                  className="p-1 hover:bg-gray-200 rounded transition-colors cursor-pointer"
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
+                  <div
+                    onClick={(e) => {
                       e.stopPropagation();
-                      e.preventDefault();
-                      // Handle more options menu here
-                    }
-                  }}
-                >
-                  <span className="w-5 h-5 block">[More Icon]</span>
+                    }}
+                    className="p-1 hover:bg-gray-200 rounded transition-colors cursor-pointer"
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.stopPropagation();
+                        e.preventDefault();
+                      }
+                    }}
+                  >
+                    <span className="block">
+                      <Image
+                        src="/ico-horizontal-dots.svg"
+                        alt="Horizontal Dots"
+                        width={18}
+                        height={18}
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </div>
                 </div>
               </button>
             );

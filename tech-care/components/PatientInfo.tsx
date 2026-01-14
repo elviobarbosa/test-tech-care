@@ -8,7 +8,6 @@ interface PatientInfoProps {
   patient: Patient;
 }
 
-// Helper function to format date
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
@@ -19,7 +18,10 @@ function formatDate(dateString: string): string {
 }
 
 export default function PatientInfo({ patient }: PatientInfoProps) {
-  const genderIcon = patient.gender.toLowerCase() === "female" ? "/ico-female.svg" : "/ico-male.svg";
+  const genderIcon =
+    patient.gender.toLowerCase() === "female"
+      ? "/ico-female.svg"
+      : "/ico-male.svg";
 
   return (
     <div className="p-6 shrink-0 bg-white rounded-2xl">
@@ -58,7 +60,9 @@ export default function PatientInfo({ patient }: PatientInfoProps) {
           </div>
           <div>
             <p className="right-item-description">Date of Birth</p>
-            <p className="right-item-value">{formatDate(patient.date_of_birth)}</p>
+            <p className="right-item-value">
+              {formatDate(patient.date_of_birth)}
+            </p>
           </div>
         </div>
 

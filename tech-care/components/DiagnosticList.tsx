@@ -47,45 +47,52 @@ export default function DiagnosticList({
         ];
 
   return (
-    <div className="bg-white rounded-2xl p-6">
-      <h2 className="card-title ">Diagnostic List</h2>
+    <div className="bg-white rounded-2xl p-6 flex flex-col overflow-hidden">
+      <h2 className="card-title">Diagnostic List</h2>
 
-      <div className="overflow-x-auto max-h-80 mt-6 overflow-y-auto">
-        <table className="w-full">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="text-left py-3 px-4 rounded-l-full">
-                <span className="diagnosis-t-header">Problem/Diagnosis</span>
-              </th>
-              <th className="text-left py-3 px-4">
-                <span className="diagnosis-t-header">Description</span>
-              </th>
-              <th className="text-left py-3 px-4 rounded-r-full">
-                <span className="diagnosis-t-header">Status</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {defaultDiagnostics.map((diagnostic) => (
-              <tr
-                key={diagnostic.id}
-                className="border-b border-gray-100 last:border-0"
-              >
-                <td className="py-4 px-4">
-                  <span className="diagnosis-item">{diagnostic.problem}</span>
-                </td>
-                <td className="py-4 px-4">
-                  <span className="diagnosis-item">
-                    {diagnostic.description}
-                  </span>
-                </td>
-                <td className="py-4 px-4">
-                  <span className="diagnosis-item">{diagnostic.status}</span>
-                </td>
+      <div className="mt-6 flex flex-col min-h-0">
+        <div className="shrink-0">
+          <table className="w-full table-fixed">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="text-left py-3 px-4 rounded-l-full w-1/3">
+                  <span className="diagnosis-t-header">Problem/Diagnosis</span>
+                </th>
+                <th className="text-left py-3 px-4 w-1/3">
+                  <span className="diagnosis-t-header">Description</span>
+                </th>
+                <th className="text-left py-3 px-4 rounded-r-full w-1/3">
+                  <span className="diagnosis-t-header">Status</span>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+          </table>
+        </div>
+
+        <div className="overflow-y-auto max-h-75">
+          <table className="w-full table-fixed">
+            <tbody>
+              {defaultDiagnostics.map((diagnostic) => (
+                <tr
+                  key={diagnostic.id}
+                  className="border-b border-gray-100 last:border-0"
+                >
+                  <td className="py-4 px-4 w-1/3">
+                    <span className="diagnosis-item">{diagnostic.problem}</span>
+                  </td>
+                  <td className="py-4 px-4 w-1/3">
+                    <span className="diagnosis-item">
+                      {diagnostic.description}
+                    </span>
+                  </td>
+                  <td className="py-4 px-4 w-1/3">
+                    <span className="diagnosis-item">{diagnostic.status}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
